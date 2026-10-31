@@ -57,7 +57,7 @@ nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--ginkgo);outline:non
 section{padding-top:30px;display:grid;gap:14px}
 section > p{margin:0;max-width:66ch}
 section[id],article[id],.card[id]{scroll-margin-top:calc(60px + env(safe-area-inset-top,0px))}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
 .card .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;align-items:baseline}
 .card ul,.card ol{margin:0;padding-left:20px;font-size:14px;display:grid;gap:4px}
@@ -126,10 +126,36 @@ table.dist td.mono{white-space:nowrap}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);display:grid;gap:8px}
 footer a{overflow-wrap:anywhere}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);font-size:13px;padding:8px 14px;border-radius:8px;max-width:90vw}
-@media (max-width:560px){
-  .stop{grid-template-columns:44px minmax(0,1fr);padding-inline:12px}
-  .stop .thumb{grid-column:2;grid-row:auto;order:-1}
-  .stop .thumb img{width:100%;height:auto;aspect-ratio:16/8}
+nav.jump a.today{background:var(--ginkgo);border-color:var(--ginkgo);color:var(--card);font-weight:600}
+.sec-toggle{display:none}
+@media (max-width:700px){
+  body{font-size:16px}
+  .wrap{padding-block:16px 48px}
+  header.top p{font-size:15px}
+  nav.jump{padding-block:8px}
+  nav.jump a{padding:9px 13px;font-size:14px}
+  section{padding-top:22px}
+  .stop{grid-template-columns:minmax(0,1fr);gap:8px;padding:14px 12px}
+  .stop.noimg{grid-template-columns:minmax(0,1fr)}
+  .stop .t{display:inline;font-size:15px;font-weight:500;color:var(--ink)}
+  .stop .t br{display:none}
+  .stop .thumb{order:-1}
+  .stop .thumb img{width:100%;height:84px;aspect-ratio:auto}
+  .stop .thumb figcaption{display:none}
+  .stop .name{font-size:16.5px}
+  .stop .note{font-size:14.5px}
+  .maps a,.maps button,.jumps a{min-height:42px;font-size:14px;padding:8px 12px}
+  .maps,.jumps{gap:8px}
+  details.go{font-size:14.5px}
+  details.go summary{min-height:44px;padding:10px 12px}
+  .ts{display:inline-block;padding:6px 0;font-size:14px}
+  .card{padding:14px}
+  .card ul,.card ol,.card p{font-size:15px}
+  section.fold > h2{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;cursor:pointer;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:18px}
+  section.fold > h2::after{content:"▾";color:var(--ginkgo);flex:none}
+  section.fold.closed > h2::after{content:"▸"}
+  section.fold.closed > :not(h2){display:none}
+  section.fold > .eyebrow{display:none}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -146,6 +172,7 @@ footer a{overflow-wrap:anywhere}
   </header>
 
   <nav class="jump" aria-label="ไปยังส่วน">
+    <a href="#d1" id="todayChip" class="today" hidden>วันนี้</a>
     <a href="#basics">เริ่มต้น: T-money / ขึ้นรถไฟ</a>
     <a href="#d1">D1 อา</a><a href="#d2">D2 จ</a><a href="#d3">D3 อ</a><a href="#d4">D4 พ</a><a href="#d5">D5 พฤ</a><a href="#d6">D6 ศ</a>
     <a href="#tip-nonumber">ไม่มีเบอร์เกาหลี</a>
@@ -774,6 +801,35 @@ document.getElementById("shopList").innerHTML=SHOPS.map(s=>`
 document.querySelectorAll("[data-place]").forEach(el=>{el.outerHTML=mapBtns(el.dataset.place)});
 document.querySelectorAll("img[data-img]").forEach(el=>{const d=IMG[el.dataset.img]; if(d) el.src=d; else el.remove();});
 document.getElementById("credits").innerHTML=CREDITS.map(c=>`<a href="${c.page}" target="_blank" rel="noopener">${esc(c.label)}</a> (${esc(c.artist)}, ${esc(c.license)})`).join(" · ");
+
+/* phone reading: jump to today, fold reference sections, open them when linked */
+const kst=new Date(Date.now()+9*36e5).toISOString().slice(0,10);
+const tripDay={"2026-11-01":1,"2026-11-02":2,"2026-11-03":3,"2026-11-04":4,"2026-11-05":5,"2026-11-06":6}[kst];
+if(tripDay){const c=document.getElementById("todayChip");c.href="#d"+tripDay;c.textContent="วันนี้ · D"+tripDay;c.hidden=false}
+const FOLD=["basics","extras","shops","areas","tip-run","tip-bagel","tips"].map(id=>document.getElementById(id)).filter(Boolean);
+const phone=matchMedia("(max-width:700px)");
+function setupFold(){
+  FOLD.forEach(sec=>{
+    const h=sec.querySelector(":scope > h2");
+    if(phone.matches){sec.classList.add("fold","closed");h.setAttribute("role","button");h.tabIndex=0;h.setAttribute("aria-expanded","false")}
+    else{sec.classList.remove("fold","closed");h.removeAttribute("role");h.removeAttribute("tabindex");h.removeAttribute("aria-expanded")}
+  });
+}
+function openFor(el){const sec=el&&el.closest("section.fold");if(sec){sec.classList.remove("closed");sec.querySelector(":scope > h2").setAttribute("aria-expanded","true")}}
+setupFold();
+phone.addEventListener("change",setupFold);
+FOLD.forEach(sec=>{
+  const h=sec.querySelector(":scope > h2");
+  const flip=()=>{if(!sec.classList.contains("fold"))return;const c=sec.classList.toggle("closed");h.setAttribute("aria-expanded",String(!c))};
+  h.addEventListener("click",flip);
+  h.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip()}});
+});
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  const el=document.getElementById(a.getAttribute("href").slice(1));if(!el)return;
+  e.preventDefault();openFor(el);el.scrollIntoView({block:"start",behavior:"instant"});
+});
+if(location.hash){const el=document.getElementById(location.hash.slice(1));if(el){openFor(el);el.scrollIntoView({block:"start",behavior:"instant"})}}
 
 const toast=document.getElementById("toast"); let tt;
 function show(msg){toast.textContent=msg;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,1800)}
