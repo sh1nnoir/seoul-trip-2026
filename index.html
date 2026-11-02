@@ -322,6 +322,9 @@ nav.jump a.today{background:var(--ginkgo);border-color:var(--ginkgo);color:var(-
         <ul>
           <li><b>thesameE ชั้น 4 (เมียงดง):</b> ตามคอมเมนต์ มีของ YG เยอะ ทางเข้าข้าง Starbucks</li>
           <li><b>K-Mecca (เมียงดง):</b> ตามรูปที่ส่งมา ใกล้ Myeongdong ทางออก 6</li>
+          <li><b>Ktown4u COEX:</b> ร้าน K-pop ขนาดใหญ่ ใส่ไว้วันที่ 5 ช่วง 14:00</li>
+          <li><b>YG PLACE อินซาดง:</b> ข้อมูลจากปี 2023 บอกว่าขายของ BLACKPINK, BABYMONSTER และ TREASURE ที่ <span class="ko">인사동길 49</span> ยังไม่รู้ว่ายังเปิดอยู่ไหม</li>
+          <li><b>ที่คอนเสิร์ต:</b> แท่งไฟและของทางการมักขายที่บูธในงาน ถ้าหาในโซลไม่เจอ ไปถึงงานให้เร็ว</li>
           <li><b>withmuu:</b> ดูหลายวงได้ที่ AK Plaza ฮงแดวันที่ 2 หรือสาขาเมียงดง <span class="ko">명동7길 16</span></li>
           <li>ก่อนจ่ายเงิน ให้เช็กว่าเป็นของทางการ และร้านมีแท่งไฟหรือสินค้าที่ต้องการไหม เวลาเปิด thesameE กับ K-Mecca ยังไม่ได้เช็ก</li>
         </ul>
@@ -550,6 +553,9 @@ const P={
   hongdae:{q:"홍대입구역",addr:"홍대입구역"},
   zaraN:{q:"자라 명동 눈스퀘어점",addr:"서울 중구 명동길 14"},
   musinsaM:{q:"무신사 스탠다드 명동중앙점",addr:"무신사 스탠다드 명동중앙점"},
+  thesameeH:{q:"더세임 합정",addr:"더세임 합정"},
+  ndminari:{q:"능동미나리 을지로점",addr:"서울 중구 을지로 120",link:"https://naver.me/Fc66UaTO"},
+  thesameeI:{q:"더세임 인사점",addr:"서울 종로구 인사동길 49"},
   thesamee:{q:"thesameE 명동",addr:"thesameE 명동"},
   kmecca:{q:"케이메카 명동",addr:"케이메카 명동"},
   withmuuAK:{q:"위드뮤 AK플라자 홍대",addr:"서울 마포구 양화로 188"},
@@ -565,6 +571,7 @@ const P={
   fuglen:{q:"푸글렌 서울",addr:"서울 마포구 와우산로 43",ig:"fuglenseoul",web:"https://fuglen.no/Fuglen-Seoul-Sangsu"},
   fuglenS:{q:"무신사 메가스토어 성수",addr:"서울 성동구 성수이로 62",ig:"fuglenseoul",web:"https://fuglen.no/New-Fuglen-Coffee-Stand-Opening-In-Seoul"},
   bamvoo:{q:"밤부 베이커리 브루잉",addr:"서울 마포구 월드컵로5길 33-23"},
+  vnp:{q:"현대카드 바이닐앤플라스틱",addr:"서울 용산구 이태원로 248",web:"https://dive.hyundaicard.com/web/vinylandplastic/spaceMain.hdc"},
   brave:{q:"카페 더브레이브",addr:"서울 용산구 녹사평대로 170",link:"https://maps.app.goo.gl/dMqHKMdNtCJdd6oB6"},
   grida:{q:"그리다 청담",addr:"그리다 청담",link:"https://naver.me/GbyqhoIy"},
   isaac:{q:"이삭토스트 서울명동점",addr:"이삭토스트 서울명동점"},
@@ -582,6 +589,7 @@ const P={
   camel:{q:"카멜커피 서촌점",addr:"서울 종로구 효자로 31",web:"https://cmlandco.kr/Location/",img:"seochon",imgcap:"ย่านซอชน"},
   nuldamG:{q:"널담은공간 경복궁점",addr:"서울 종로구 삼청로 24",web:"https://nuldamspace.com/en/pages/store-information"},
   oliveB:{q:"올리브베러 광화문점",addr:"올리브베러 광화문점 디타워"},
+  ktown:{q:"케이타운포유 코엑스",addr:"서울 강남구 영동대로 513"},
   acne:{q:"현대백화점 무역센터점 아크네 스튜디오",addr:"현대백화점 무역센터점"},
   coex:{q:"별마당도서관",addr:"서울 강남구 영동대로 513",img:"coex"},
   jamsilHR:{q:"잠실한강공원",addr:"잠실한강공원",img:"hangang"},
@@ -637,31 +645,38 @@ const DAYS=[
   {t:"18:00",e:"19:10",n:"มื้อเย็น: Honkojib (หมูย่างคนเดียว)",ko:"혼고집",p:"honko",added:true,tip:["opt-honko","รายละเอียดร้าน"],note:"รีวิวบอกว่าเป็นที่นั่งคนเดียวทั้งร้าน เมนูคิดเป็นชุดคนเดียว ไม่ต้องจอง",go:{f:"Fuglen Seoul",to:"Honkojib",m:"~15 นาทีเดิน",s:[`เดินขึ้นเหนือผ่านฮงแดไปฝั่ง Hongik Univ. ทางออก 3 ร้านอยู่ที่ ${K("동교로30길 1")} ใช้ Naver นำทางเดิน`]}},
   {t:"19:30",e:"20:30",n:"Bamvoo Bakery & Brewing (ร้าน AGIT ใน We Are All Trying Here)",ko:"밤부 베이커리&브루잉",p:"bamvoo",added:true,tip:["opt-drama","ตามรอยซีรีส์"],note:"ตอนนี้มืดแล้ว ภาพหน้าร้านจะเหมือนในซีรีส์ เปิดราว 11:30–21:30 ไม่ต้องจอง",go:{f:"Honkojib",to:"Bamvoo → กลับโรงแรม",m:"~15 นาที / กลับ ~35 นาที",s:[`เดินไปสถานี Hongik Univ. ขึ้น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Hapjeong</b> (${K("합정")}) นั่ง 1 สถานี ออก<b>ทางออก 8</b> เดินราว 3 นาที`,`ขากลับ: ${L(2)} ที่ Hapjeong ฝั่งที่<b>สถานีถัดไปคือ Hongik Univ.</b> นั่ง 7 สถานี ลงที่ <b>Euljiro 1-ga</b> (${K("을지로입구")}) ออกทางออกฝั่งใต้แล้วเดินเข้าเมียงดงราว 7 นาที`],alt:[`<b>แท็กซี่</b> Hapjeong → เมียงดง ราว 25–30 นาที เรียกผ่าน K.Ride`]}}
  ],warn:"Sounds Good Store: เว็บรีวิวระบุเปิด 13:00–21:00 ทุกวัน แต่ยังไม่มีแหล่งไหนยืนยันวันหยุดประจำ ให้เช็ก IG @soundsgood_store ก่อน ถ้าวันจันทร์ปิด ให้สลับ D2 กับ D3 (วังปิดวันอังคาร แต่การวิ่งรอบรั้วด้านนอกไม่ติดอะไร)"},
- {id:"d3",date:"อ 3 พ.ย.",theme:"ซองซูเต็มวัน (ห่างโรงแรมราว 30–35 นาที)",areas:[["area-seongsu","ซองซู"]],stops:[
-  {t:"09:30",n:"Seoul Forest ใบไม้เปลี่ยนสี",ko:"서울숲",p:"forest",go:{f:"โรงแรม",to:"Seoul Forest",m:"~35 นาที",s:[
+ {id:"d3",date:"อ 3 พ.ย.",theme:"ซองซูเช้าถึงบ่าย → Sounds Good ที่ยอนนัม → มื้อเย็นฮงแด → ชองกเยชอนตอนค่ำ",areas:[["area-seongsu","ซองซู"],["area-yeonnam","ยอนนัม / ฮงแด"]],stops:[
+  {t:"09:20",e:"10:20",n:"Seoul Forest ใบไม้เปลี่ยนสี",ko:"서울숲",p:"forest",go:{f:"โรงแรม",to:"Seoul Forest",m:"~35 นาที (ออก 08:45)",s:[
     `${L(4)} ฝั่งที่สถานีถัดไปคือ Chungmuro นั่ง 2 สถานี ลงที่ <b>Dongdaemun History & Culture Park</b> (${K("동대문역사문화공원")})`,
     `เปลี่ยนเป็น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Sindang</b> (${K("신당")}) นั่ง 5 สถานี ลงที่ <b>Ttukseom</b> (${K("뚝섬")})`,
-    `ออก<b>ทางออก 8</b> แล้วเดินราว 10 นาทีเข้าสวน`],alt:[`<b>แท็กซี่</b> ราว 25 นาที`]}},
-  {t:"11:00",n:"Cafe Onion ซองซู (มื้อสาย)",ko:"카페 어니언 성수",p:"onionS",added:true,clip:[["jan",602,"Cafe Onion ซองซู"]],note:"คาเฟ่ในโรงงานเก่า มีดาดฟ้า เมนูดังคือ Pandoro โรยน้ำตาลไอซิ่งเป็นกอง",go:{f:"Seoul Forest",to:"Cafe Onion",m:"~15 นาที",s:[`เดินกลับไปสถานี Ttukseom ขึ้น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Seongsu</b> (${K("성수")}) นั่ง 1 สถานี`,`ออก<b>ทางออก 2</b> เดินราว 2 นาที`],alt:[`<b>เดิน</b> จากขอบเหนือของ Seoul Forest ราว 15 นาที`]}},
-  {t:"12:30",n:"Yeonmujang-gil + Olive Young N ซองซู",ko:"연무장길 · 올리브영N 성수",p:"oyN",added:true,clip:[["jan",892,"Olive Young สาขาใหญ่สุด"]],note:"Olive Young สาขาใหญ่ที่สุดในเกาหลี มี 5 ชั้น",go:{f:"Cafe Onion",to:"Olive Young N ซองซู",m:"~5–10 นาทีเดิน",s:[`เดินข้ามไปฝั่งถนนยอนมูจังกิล ร้านอยู่ห่างสถานี Seongsu <b>ทางออก 4</b> ราว 2–3 นาที`]}},
-  {t:"15:00",n:"COOR Seongsu Flagship",ko:"쿠어 성수 플래그십 스토어",p:"coor",added:true,clip:[["mini",664,"COOR ซองซู"]],tip:["tip-coor","ต้องจองคิวไหม"],note:"เปิด 12:30–20:30 ไม่ต้องจอง เดินเข้าได้เลย",go:{f:"Olive Young N",to:"COOR",m:"~5–10 นาทีเดิน",s:[`เดินเลียบถนนยอนมูจังกิล ใช้ Naver นำทางเดินช่วงสุดท้าย`]}},
-  {t:"16:00",n:"Blue Elephant Space Seongsu",ko:"블루엘리펀트 스페이스 성수",p:"blue",added:true,opt:true,clip:[["mini",694,"ร้านแว่น Blue Elephant"],["fluke",1598,"Blue Elephant"]],note:"ร้านแว่นขนาดใหญ่ มีคาเฟ่และดาดฟ้า",go:{f:"COOR",to:"Blue Elephant",m:"1 นาที",s:[`อยู่ฝั่งตรงข้ามถนน (${K("연무장길 13")})`]}},
-  {t:"17:00",e:"18:15",n:"MUSINSA Megastore ซองซู",ko:"무신사 메가스토어 성수",p:"fuglenS",added:true,note:"รวมหลายแบรนด์เกาหลีในร้านเดียว ชั้น 4 มีซุ้ม Fuglen เปิด 11:00–21:00 ยังไม่ได้เช็กเวลาเปิดของร้าน",go:{f:"Blue Elephant",to:"MUSINSA Megastore ซองซู",m:"~10 นาทีเดิน",s:[`ใช้ Naver นำทางเดินไปที่ ${K("성수이로 62")}`]}},
-  {t:"18:30",n:"มื้อเย็นที่ซองซู แล้วกลับโรงแรม",p:"oyo",note:"ตัดแม่น้ำฮันวันนี้ออก เพราะวันที่ 5 ปิคนิคริมน้ำอยู่แล้ว",go:{f:"ซองซู",to:"โรงแรม",m:"~35 นาที",s:[
-    `${L(2)} ที่ Seongsu ฝั่งที่<b>สถานีถัดไปคือ Ttukseom</b> นั่ง 6 สถานีถึง Dongdaemun History & Culture Park`,
-    `เปลี่ยนเป็น ${L(4)} ฝั่งที่<b>สถานีถัดไปคือ Chungmuro</b> นั่ง 2 สถานีถึง Myeongdong`]}},
-  {t:"20:15",e:"21:00",n:"เดินเล่นคลองชองกเยชอนตอนกลางคืน",ko:"청계천",p:"ccg",clip:[["sy",711,"ชองกเยชอน ใน Can This Love Be Translated?"]],note:"ย้ายมาจากวันที่ 1 เพราะฝนตก ใช้เวลาเดินราว 45 นาที",go:{f:"สถานี Myeongdong",to:"คลองชองกเยชอน (สะพาน Gwangtonggyo)",m:"10–15 นาทีเดิน",s:[`เดินขึ้นเหนือผ่านถนนหลักเมียงดง ข้ามถนนใหญ่ Euljiro แล้วเดินต่อจนถึงคลอง`,`ลงบันไดไปเดินริมน้ำ ช่วงกลางคืนมีไฟ ขากลับเดินทางเดิมไปโรงแรม`]}}
+    `ออก<b>ทางออก 8</b> แล้วเดินราว 10 นาทีเข้าสวน`]}},
+  {t:"10:35",e:"11:30",n:"Cafe Onion ซองซู (มื้อเช้า)",ko:"카페 어니언 성수",p:"onionS",added:true,clip:[["jan",602,"Cafe Onion ซองซู"]],note:"วันธรรมดาเปิด 08:00–22:00 เมนูดังคือ Pandoro",go:{f:"Seoul Forest",to:"Cafe Onion",m:"~15 นาทีเดิน",s:[`เดินจากขอบเหนือของสวน หรือนั่ง ${L(2)} จาก Ttukseom 1 สถานีไป Seongsu ทางออก 2`]}},
+  {t:"11:30",e:"12:15",n:"Olive Young N ซองซู (ไม่เกิน 45 นาที)",ko:"올리브영N 성수",p:"oyN",added:true,clip:[["jan",892,"Olive Young สาขาใหญ่สุด"]],note:"สาขาใหญ่ที่สุดในเกาหลี 5 ชั้น ระหว่าง 12:15–12:30 เดินดูร้านบนยอนมูจังกิลไปทาง COOR",go:{f:"Cafe Onion",to:"Olive Young N",m:"5–10 นาทีเดิน",s:[`ร้านอยู่ใกล้ Seongsu <b>ทางออก 4</b> ใช้ Naver นำทางเดิน`]}},
+  {t:"12:30",e:"13:15",n:"COOR Seongsu Flagship",ko:"쿠어 성수 플래그십 스토어",p:"coor",added:true,clip:[["mini",664,"COOR ซองซู"]],tip:["tip-coor","ต้องจองคิวไหม"],note:"เปิด 12:30 ไม่ต้องจอง",go:{f:"Olive Young N",to:"COOR",m:"~10 นาทีเดิน",s:[`เดินเลียบถนนยอนมูจังกิล ใช้ Naver นำทางเดิน`]}},
+  {t:"13:15",e:"13:40",n:"Blue Elephant Space Seongsu",ko:"블루엘리펀트 스페이스 성수",p:"blue",added:true,opt:true,clip:[["mini",694,"ร้านแว่น Blue Elephant"]],go:{f:"COOR",to:"Blue Elephant",m:"1 นาที",s:[`อยู่ฝั่งตรงข้ามถนน`]}},
+  {t:"13:45",e:"15:00",n:"MUSINSA Megastore ซองซู",ko:"무신사 메가스토어 성수",p:"fuglenS",added:true,note:"รวมหลายแบรนด์เกาหลี ชั้น 4 มีซุ้ม Fuglen ถ้าหิว กินของว่างที่นี่ได้",go:{f:"Blue Elephant",to:"MUSINSA Megastore",m:"~10 นาทีเดิน",s:[`ใช้ Naver นำทางเดินไปที่ ${K("성수이로 62")}`]}},
+  {t:"16:00",e:"17:00",n:"Sounds Good Store",ko:"사운즈굿 스토어",p:"sgs",added:true,clip:[["mini",983,"ร้านแผ่นเสียงใต้ดิน"]],note:"ย้ายมาจากวันที่ 2 ซึ่งร้านปิด เปิดอังคาร–อาทิตย์ 13:00–20:00",go:{f:"MUSINSA Megastore",to:"Sounds Good Store",m:"~50 นาที (ออก 15:10)",s:[
+    `เดินไปสถานี Seongsu ขึ้น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Ttukseom</b> นั่ง 15 สถานี ลงที่ <b>Hongik Univ.</b> (${K("홍대입구")})`,
+    `ออก<b>ทางออก 3</b> เดินขึ้นเหนือเข้ายอนนัม 12–15 นาที ร้านอยู่ชั้น B1`]}},
+  {t:"17:15",e:"17:45",n:"thesameE ฮับจอง (เสริม)",ko:"더세임 합정",p:"thesameeH",added:true,opt:true,tip:["tip-kpop","ดูร้านของติ่ง"],note:"ร้านของค่าย YG เปิดใหม่ มี.ค. 2026 ยังไม่ได้เช็กเวลาเปิด",go:{f:"Sounds Good Store",to:"thesameE ฮับจอง",m:"~20 นาที",s:[`กลับไปสถานี Hongik Univ. ขึ้น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Hapjeong</b> นั่ง 1 สถานี แล้วใช้ Naver นำทางเดิน หรือนั่งแท็กซี่สั้นๆ`]}},
+  {t:"18:15",e:"19:15",n:"มื้อเย็น: Neungdong Minari สาขาอึลจีโร",ko:"능동미나리 을지로점",p:"ndminari",added:true,note:"ร้านซุปเนื้อใส่ผักมินาริ ร้านต้นตำรับได้ Michelin Bib Gourmand 2026 · เมนูหลัก 미나리곰탕 ราว 15,000–18,000 ₩ · จ–พฤ เปิด 10:00–22:00 · โทร 02-2285-2280 · ถ้ามีคิวให้ขอพนักงานช่วยลงคิว",go:{f:"ฮับจอง / ฮงแด",to:"Neungdong Minari อึลจีโร",m:"~30 นาที (ออก 17:45)",s:[
+    `${L(2)} ที่ Hapjeong ฝั่งที่<b>สถานีถัดไปคือ Hongik Univ.</b> นั่ง 8 สถานี ลงที่ <b>Euljiro 3-ga</b> (${K("을지로3가")}) ถ้าขึ้นที่ Hongik ให้นั่ง 7 สถานี`,
+    `ออก<b>ทางออก 10</b> ร้านอยู่ห่างราว 1 นาที`]}},
+  {t:"19:30",e:"20:15",n:"เดินเล่นคลองชองกเยชอนตอนกลางคืน",ko:"청계천",p:"ccg",clip:[["sy",711,"ชองกเยชอน ใน Can This Love Be Translated?"]],note:"ย้ายมาจากวันที่ 1 เพราะฝนตก",go:{f:"Neungdong Minari",to:"คลองชองกเยชอน → โรงแรม",m:"~10 นาทีเดิน (ออก 19:15)",s:[`ใช้ Naver นำทางเดินขึ้นเหนือไปคลองชองกเยชอน แล้วเดินเลียบคลองไปทางสะพาน Gwangtonggyo`,`ขากลับเดินลงใต้เข้าเมียงดงราว 10–15 นาที`]}}
  ]},
  {id:"d4",date:"พ 4 พ.ย.",theme:"เช้าคนเดียว → 15:40 เพื่อนมาวางของที่โรงแรม → ดาดฟ้า Cliff → Nuldam → อิแทวอน 19:00",areas:[["area-myeongdong","เมียงดง / นัมแดมุน"],["area-haebangchon","แฮบังชน / นัมซาน / อิแทวอน"],["area-hannam","ฮันนัม"]],stops:[
   {t:"08:30",e:"09:15",n:"มื้อเช้า: Isaac Toast",ko:"이삭토스트 서울명동점",p:"isaac",go:{f:"โรงแรม",to:"Isaac Toast",m:"5–10 นาทีเดิน",s:[`ค้นชื่อร้านใน Naver แล้วนำทางเดิน ร้านอยู่ในย่านเมียงดง`]}},
   {t:"09:20",e:"09:50",n:"Jeongdong-gil ถนนแปะก๊วย",ko:"정동길",p:"jeongdong",added:true,note:"ถนนเลียบกำแพงหินไปถึงวังด็อกซูกุง ควรดูใบไม้ช่วงเช้า",go:{f:"Isaac Toast",to:"Jeongdong-gil",m:"~15 นาทีเดิน",s:[`ใช้ Naver นำทางเดินไป ${K("정동길")} ทางเข้าจาก City Hall ทางออก 12 เดินราว 5 นาที`]}},
-  {t:"10:00",e:"12:30",n:"ตลาดนัมแดมุน + มื้อกลางวัน",ko:"남대문시장",p:"namdaemun",go:{f:"Jeongdong-gil",to:"ตลาดนัมแดมุน",m:"~10–15 นาทีเดิน",s:[`เดินลงใต้ผ่าน City Hall ไปตลาด ใช้ Naver นำทางเดิน`]}},
-  {t:"13:00",e:"14:10",n:"Cafe The Brave (ตามรอย Can This Love Be Translated?)",p:"brave",added:true,clip:[["sy",113,"Cafe The Brave"],["sy",0,"สถานี Noksapyeong"]],tip:["opt-drama","ตามรอยซีรีส์"],note:"วันธรรมดาเปิดราว 09:00–19:30",go:{f:"ตลาดนัมแดมุน",to:"Cafe The Brave",m:"~25 นาที (ออก 12:30)",s:[
-    `เดินกลับไปสถานี Hoehyeon ขึ้น ${L(4)} ฝั่งที่<b>สถานีถัดไปคือ Seoul Station</b> นั่ง 3 สถานี ลงที่ <b>Samgakji</b> (${K("삼각지")})`,
-    `เปลี่ยนเป็น ${L(6)} ฝั่งที่<b>สถานีถัดไปคือ Noksapyeong</b> (${K("녹사평")}) นั่ง 1 สถานี`,
+  {t:"10:00",e:"12:15",n:"ตลาดนัมแดมุน + มื้อกลางวัน",ko:"남대문시장",p:"namdaemun",go:{f:"Jeongdong-gil",to:"ตลาดนัมแดมุน",m:"~10–15 นาทีเดิน",s:[`เดินลงใต้ผ่าน City Hall ไปตลาด ใช้ Naver นำทางเดิน`]}},
+  {t:"12:45",e:"13:30",n:"Hyundai Card Vinyl & Plastic",ko:"현대카드 바이닐앤플라스틱",p:"vnp",added:true,note:"ร้านแผ่นเสียงและ CD มีที่ลองฟัง เปิดอังคาร–เสาร์ 12:00–21:00 ปิดวันจันทร์",go:{f:"ตลาดนัมแดมุน",to:"Vinyl & Plastic",m:"~30 นาที (ออก 12:15)",s:[
+    `เดินไปสถานี Hoehyeon ขึ้น ${L(4)} ฝั่งที่<b>สถานีถัดไปคือ Seoul Station</b> นั่ง 3 สถานี ลงที่ <b>Samgakji</b> (${K("삼각지")})`,
+    `เปลี่ยนเป็น ${L(6)} ฝั่งที่<b>สถานีถัดไปคือ Noksapyeong</b> นั่ง 3 สถานี ผ่าน Itaewon ลงที่ <b>Hangangjin</b> (${K("한강진")})`,
+    `ออก<b>ทางออก 3</b> เดินราว 390 ม. ไปที่ ${K("이태원로 248")}`]}},
+  {t:"13:50",e:"14:30",n:"Cafe The Brave (ตามรอย Can This Love Be Translated?)",p:"brave",added:true,clip:[["sy",113,"Cafe The Brave"],["sy",0,"สถานี Noksapyeong"]],tip:["opt-drama","ตามรอยซีรีส์"],note:"วันธรรมดาเปิดราว 09:00–19:30",go:{f:"Vinyl & Plastic",to:"Cafe The Brave",m:"~15 นาที",s:[
+    `เดินกลับไปสถานี Hangangjin ขึ้น ${L(6)} ฝั่งที่<b>สถานีถัดไปคือ Itaewon</b> นั่ง 2 สถานี ลงที่ <b>Noksapyeong</b>`,
     `ใช้ Naver นำทางเดินไปที่ ${K("녹사평대로 170")} ร้านอยู่ห่างสถานีไม่กี่นาที`]}},
-  {t:"14:10",e:"14:45",n:"Seoul Vinyl + มุมถ่ายรูปนกซาพยอง",ko:"서울바이닐",p:"vinyl",clip:[["fluke",2497,"มุมถ่ายรูปนัมซาน"]],note:"ร้านแผ่นเสียงชั้น 2 เปิด 13:00–20:00 ปิดวันอาทิตย์ ส่วนบาร์ชั้น 1 ปิดอยู่ มุมถ่ายรูปอยู่ฝั่ง Noksapyeong ทางออก 1",go:{f:"Cafe The Brave",to:"Seoul Vinyl",m:"~5 นาทีเดิน",s:[`เดินไปฝั่ง Noksapyeong <b>ทางออก 2</b> ร้านอยู่ที่ ${K("신흥로 30")} ใช้ Naver นำทางเดิน`]}},
-  {t:"15:15",e:"16:00",n:"พักที่โรงแรม เพื่อนถึงราว 15:40 มาวางของ",p:"oyo",added:true,tip:["tip-friend","เพื่อนมาช้าทำยังไง"],go:{f:"Seoul Vinyl",to:"โรงแรม",m:"~30 นาที (ออก 14:45)",s:[
+  {t:"14:35",e:"14:55",n:"Seoul Vinyl + มุมถ่ายรูปนกซาพยอง",ko:"서울바이닐",p:"vinyl",clip:[["fluke",2497,"มุมถ่ายรูปนัมซาน"]],note:"ร้านแผ่นเสียงชั้น 2 เปิด 13:00–20:00 ปิดวันอาทิตย์ แวะสั้นๆ เพราะต้องกลับโรงแรมก่อนเพื่อนมา",go:{f:"Cafe The Brave",to:"Seoul Vinyl",m:"~5 นาทีเดิน",s:[`เดินไปฝั่ง Noksapyeong <b>ทางออก 2</b> ร้านอยู่ที่ ${K("신흥로 30")} ใช้ Naver นำทางเดิน`]}},
+  {t:"15:25",e:"16:00",n:"พักที่โรงแรม เพื่อนถึงราว 15:40 มาวางของ",p:"oyo",added:true,tip:["tip-friend","เพื่อนมาช้าทำยังไง"],go:{f:"Seoul Vinyl",to:"โรงแรม",m:"~30 นาที (ออก 14:55)",s:[
     `เดินไปสถานี Noksapyeong ขึ้น ${L(6)} ฝั่งที่<b>สถานีถัดไปคือ Samgakji</b> นั่ง 1 สถานี`,
     `เปลี่ยนเป็น ${L(4)} ฝั่งที่<b>สถานีถัดไปคือ Sookmyung Women's Univ.</b> (${K("숙대입구")}) นั่ง 4 สถานี ลงที่ <b>Myeongdong</b>`]}},
   {t:"16:40",e:"17:40",n:"Cliff Seoul ดาดฟ้า ช่วงแสงเย็นถึงพระอาทิตย์ตก",ko:"클리프 서울",p:"cliff",added:true,clip:[["mini",480,"Cliff ซอยขึ้นเนิน"]],note:"พระอาทิตย์ตกราว 17:25 เห็น N Seoul Tower จากดาดฟ้า ตอนเย็นหนาวและลมแรง ให้พกเสื้อกันหนาว · ถ้าเต็มใช้ Upstanding Coffee แทนได้",go:{f:"โรงแรม",to:"Cliff Seoul",m:"~40 นาที (ออก 16:00)",s:[
@@ -681,12 +696,14 @@ const DAYS=[
   {t:"09:00",e:"10:15",n:"พระราชวังเคียงบกกุง",ko:"경복궁",p:"gbg",note:"10:15–10:30 คืนฮันบกที่ร้าน เพื่อให้อยู่ในเวลาเช่า 2 ชม.",go:{f:"ร้านฮันบก",to:"ประตูกวางฮวามุน",m:"~5 นาทีเดิน",s:[`เดินตามป้ายไปประตูหน้าวัง ใส่ฮันบกเข้าฟรี`]}},
   {t:"10:45",e:"11:30",n:"Camel Coffee ซอชน (อาคารไปรษณีย์เก่า)",ko:"카멜커피 서촌점",p:"camel",added:true,clip:[["mini",1203,"คาเฟ่ข้างวัง"]],note:"เปิด 08:00–21:00",go:{f:"ร้านฮันบก",to:"Camel Coffee",m:"~15 นาทีเดิน",s:[`เดินจากสถานี Gyeongbokgung ทางออก 4 ไปที่ ${K("효자로 31")} ใช้ Naver นำทางเดิน`]}},
   {t:"11:40",e:"12:10",n:"adidas Performance Seochon",ko:"아디다스 퍼포먼스 서촌",p:"adidas",added:true,note:"ร้านสายวิ่ง เปิด 11:00–20:00 มีบริการสลัก dubrae สำหรับเชือกรองเท้า หน้าทางการระบุเปิดถึง 27 ธ.ค. 2026",go:{f:"Camel Coffee",to:"adidas Performance Seochon",m:"~10 นาทีเดิน",s:[`ใช้ Naver นำทางเดินไปที่ ${K("자하문로10길 7")}`]}},
-  {t:"13:15",e:"14:45",n:"Coex Mall + Starfield Library",ko:"별마당도서관",p:"coex",clip:[["fluke",2993,"Starfield Library"]],go:{f:"adidas Seochon",to:"Coex (สถานี Samseong)",m:"~55 นาที (ออก 12:15)",s:[
-    `เดินกลับไปสถานี Gyeongbokgung ขึ้น ${L(3)} ฝั่งที่<b>สถานีถัดไปคือ Anguk</b> นั่ง 3 สถานี ลงที่ Euljiro 3-ga`,
+  {t:"12:25",e:"12:45",n:"thesameE อินซาดง (ร้าน YG) ไม่เกิน 20 นาที",ko:"더세임 인사점",p:"thesameeI",added:true,tip:["tip-kpop","ดูร้านของติ่ง"],note:"ชั้น 3 อาคาร 안녕인사동 ร้านเดิมของ YG PLACE เปิดราว 10:30–20:00 โทร 02-6954-2891",go:{f:"adidas Seochon",to:"thesameE อินซาดง",m:"~15 นาที (ออก 12:10)",s:[`เดินกลับไปสถานี Gyeongbokgung ขึ้น ${L(3)} ฝั่งที่<b>สถานีถัดไปคือ Anguk</b> นั่ง 1 สถานี`,`ใช้ Naver นำทางเดินไปที่ ${K("인사동길 49")} แล้วขึ้นชั้น 3`],alt:[`<b>แท็กซี่</b> จากซอชนราว 10 นาที`]}},
+  {t:"13:40",e:"15:00",n:"Coex Mall + Starfield Library",ko:"별마당도서관",p:"coex",clip:[["fluke",2993,"Starfield Library"]],go:{f:"thesameE อินซาดง",to:"Coex (สถานี Samseong)",m:"~55 นาที (ออก 12:45)",s:[
+    `เดินกลับไปสถานี Anguk ขึ้น ${L(3)} ฝั่งที่<b>สถานีถัดไปคือ Jongno 3-ga</b> นั่ง 2 สถานี ลงที่ Euljiro 3-ga`,
     `เปลี่ยนเป็น ${L(2)} ฝั่งที่<b>สถานีถัดไปคือ Euljiro 4-ga</b> นั่งยาว 16 สถานี ลงที่ <b>Samseong</b> (${K("삼성")})`,
     `ออก<b>ทางออก 5 หรือ 6</b> แล้วเดินใต้ดินเข้า Coex`]}},
-  {t:"14:50",e:"15:25",n:"Acne Studios สาขา Hyundai Department Store (Coex)",ko:"현대백화점 무역센터점",p:"acne",added:true,note:"อยู่ติด Coex รายชื่อสาขาอาจเก่า ให้เช็กใน Naver Map ก่อน ถ้าไม่มีให้ไป Lotte Avenuel ที่จัมชิลก่อนปิคนิค",go:{f:"Coex Mall",to:"Hyundai Department Store",m:"เดินในอาคาร",s:[`เดินตามป้าย Hyundai Department Store (${K("현대백화점")}) แล้วดูแผนผังร้านในห้าง`]}},
-  {t:"16:00",e:"18:00",n:"ปิคนิครามยอนที่สวนแม่น้ำฮันจัมชิล",ko:"잠실한강공원",p:"jamsilHR",added:true,clip:[["fluke",3042,"ปิคนิครามยอนริมน้ำ"]],note:"พระอาทิตย์ตกราว 17:25 หลังจากนั้นหนาวเร็ว ให้พกผ้าคลุม",tip:["tip-picnic","ทิปปิคนิค"],go:{f:"Hyundai Department Store",to:"สวนแม่น้ำฮันจัมชิล",m:"~20 นาที (ออก 15:30)",s:[
+  {t:"15:00",e:"15:35",n:"Ktown4u COEX ร้าน K-pop",ko:"케이타운포유 코엑스",p:"ktown",added:true,tip:["tip-kpop","ดูร้านของติ่ง"],note:"ร้านอัลบั้มและของศิลปินหลายค่าย ชั้น 2 เป็นร้านหลัก เปิดราว 10:00–20:00 ชั้น 4 เป็นป๊อปอัป ถามพนักงานเรื่องของ BABYMONSTER",go:{f:"Starfield Library",to:"Ktown4u COEX",m:"เดินในบริเวณ Coex",s:[`ร้านอยู่ในอาคาร Shinhan Card Artium ฝั่ง Coex ใช้ Naver นำทางเดิน`]}},
+  {t:"15:40",e:"16:15",n:"Acne Studios สาขา Hyundai Department Store (Coex)",ko:"현대백화점 무역센터점",p:"acne",added:true,note:"อยู่ติด Coex รายชื่อสาขาอาจเก่า ให้เช็กใน Naver Map ก่อน ถ้าไม่มีให้ไป Lotte Avenuel ที่จัมชิลก่อนปิคนิค",go:{f:"Coex Mall",to:"Hyundai Department Store",m:"เดินในอาคาร",s:[`เดินตามป้าย Hyundai Department Store (${K("현대백화점")}) แล้วดูแผนผังร้านในห้าง`]}},
+  {t:"16:45",e:"18:00",n:"ปิคนิครามยอนที่สวนแม่น้ำฮันจัมชิล",ko:"잠실한강공원",p:"jamsilHR",added:true,clip:[["fluke",3042,"ปิคนิครามยอนริมน้ำ"]],note:"พระอาทิตย์ตกราว 17:25 หลังจากนั้นหนาวเร็ว ให้พกผ้าคลุม",tip:["tip-picnic","ทิปปิคนิค"],go:{f:"Hyundai Department Store",to:"สวนแม่น้ำฮันจัมชิล",m:"~20 นาที (ออก 16:20)",s:[
     `${L(2)} ที่ Samseong ฝั่งที่<b>สถานีถัดไปคือ Sports Complex</b> (${K("종합운동장")}) นั่ง 1 สถานี`,
     `ออก<b>ทางออก 8</b> แล้วเดินลอดทางด่วนตรงทางเข้า ${K("잠실운동장 나들목")} ราว 10 นาทีถึงริมน้ำ`]}},
   {t:"18:45",e:"20:15",n:"มื้อเย็นที่ซอซุนราคิล",ko:"서순라길",p:"seosun",clip:[["fluke",3428,"ซอซุนราคิล"],["belleS",183,"ซอซุนราคิล + Cafe Sasa"]],note:"ถนนเลียบกำแพงศาลเจ้าจงมโย กลางคืนเป็นร้านอาหารและไวน์",go:{f:"สวนแม่น้ำฮันจัมชิล",to:"ซอซุนราคิล → กลับโรงแรม",m:"~45 นาที (ออก 18:00) / กลับ ~20 นาที",s:[
